@@ -1,0 +1,65 @@
+﻿
+@model IPL2K18.Models.Team
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+    </style>
+</head>
+<body>
+
+    @*<div class="col-md-3">
+        @if(ViewBag.TeamList!= null)
+        {
+            @Html.DropDownListFor(m => m.TeamId,ViewBag.TeamList as SelectList,"---select team---",new { @class = "form-control"})
+        }
+
+    </div>*@
+
+    @using (Html.BeginForm("Index", "Match", FormMethod.Post))
+    {
+        <table>
+            <tr>               
+                <td>
+                    @if (ViewBag.TeamList1 != null)
+                    {
+                        @Html.DropDownListFor(m => m.TeamId, ViewBag.TeamList1 as SelectList, "---select team---", new { @class = "form-control" })
+                    }
+                </td>
+                <td>
+                    @if (ViewBag.TeamList2 != null)
+                    {
+                        @Html.DropDownListFor(m => m.TeamId, ViewBag.TeamList2 as SelectList, "---select team---", new { @class = "form-control" })
+                    }
+                </td>
+            </tr>            
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Submit" />
+                </td>
+            </tr>
+        </table>
+    }
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+    }
+</body>
+</html>
